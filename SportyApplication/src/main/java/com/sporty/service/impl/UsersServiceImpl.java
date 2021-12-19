@@ -7,82 +7,82 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sporty.DTO.usersDTO;
 import com.sporty.entity.AppUsers;
 //import com.sporty.entity.Users;
 import com.sporty.repository.UsersRepository;
 import com.sporty.service.UsersService;
 
 @Service
-public class UsersServiceImpl implements UsersService{
-	
-	
+public class UsersServiceImpl implements UsersService {
+
 	@Autowired
-	 UsersRepository usersRepository;
+	UsersRepository usersRepository;
 
 	@Override
-	public List<AppUsers> getAllUsers() {
-		List<AppUsers> userList = usersRepository.findAll();
+	public List<usersDTO> getAllUsers() {
+		List<usersDTO> userList = usersRepository.findAllUserDetails();
 		return userList;
 	}
 
 	@Override
-	public AppUsers getUserByUserNameAndPassword(String userName,String password) {
+	public AppUsers getUserByUserNameAndPassword(String userName, String password) {
 		AppUsers userLoggedIn = usersRepository.findByUserNameAndPassword(userName, password);
-		if(Objects.nonNull(userLoggedIn)) {
+		if (Objects.nonNull(userLoggedIn)) {
 			return userLoggedIn;
-			
+
 		}
-		
+
 		else {
-		return null;}
+			return null;
+		}
 	}
 
 	@Override
 	public List<AppUsers> getUsersByType(int usertype) {
-		List<AppUsers> userList1=usersRepository.findByUserType(usertype);
+		List<AppUsers> userList1 = usersRepository.findByUserType(usertype);
 		return userList1;
 	}
 
 	@Override
 	public void saveUser(AppUsers user1) {
 		usersRepository.save(user1);
-		
+
 	}
 
 	@Override
 	public void deleteUser(long id) {
 		AppUsers user1 = usersRepository.findById(id);
-		
-		if(Objects.nonNull(user1)) {
+
+		if (Objects.nonNull(user1)) {
 			usersRepository.delete(user1);
 		}
-		
+
 	}
 
 	@Override
-	public String changePassword(String password,long id) {
+	public String changePassword(String password, long id) {
 		AppUsers user1 = usersRepository.findById(id);
-		
-		if(Objects.nonNull(user1)) {
+
+		if (Objects.nonNull(user1)) {
 			usersRepository.changePassword(password, id);
 			return "Password Changed";
-		}
-		else {
+		} else {
 			return "Password not Changed";
 		}
-		
+
 	}
 
 	@Override
 	public AppUsers getByUserId(long id) {
-		
+
 		return usersRepository.findById(id);
 	}
 
-//	@Override
-//	public void updateUser(Users user1) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	// @Override
+	// public void updateUser(Users user1) {
+	// // TODO Auto-generated method stub
+	//
+	// }
 
 }

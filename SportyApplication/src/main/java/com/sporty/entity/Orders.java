@@ -20,34 +20,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Orders {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long order_id;
-	
-	@Column(name="order_date")
+
+	@Column(name = "order_date")
 	@Temporal(TemporalType.DATE)
 	Date orderDate;
 	char order_complete;
-	
-	@OneToMany(mappedBy="orders",fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval=true)
+
+	@OneToMany(mappedBy = "orders", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	List<OrderItems> items;
-	
-	@ManyToOne(fetch=FetchType.LAZY,optional=false)
-	@JoinColumn(name="id")
-	
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "id")
+
 	private AppUsers users;
-	
+
 	public Orders() {
-		
+
 	}
-	
-	public Orders(Date order_date, char order_complete,AppUsers users) {
+
+	public Orders(Date order_date, char order_complete, AppUsers users) {
 		super();
 		this.orderDate = order_date;
 		this.order_complete = order_complete;
 		this.users = users;
 	}
+
 	public Orders(Date order_date, char order_complete, List<OrderItems> items) {
 		super();
 		this.orderDate = order_date;
@@ -68,9 +69,9 @@ public class Orders {
 	}
 
 	public void setOrder_complete(boolean order_complete) {
-		if(order_complete) {
-		this.order_complete = 'Y';}
-		else {
+		if (order_complete) {
+			this.order_complete = 'Y';
+		} else {
 			this.order_complete = 'N';
 		}
 	}
@@ -87,8 +88,6 @@ public class Orders {
 		return order_id;
 	}
 
-
-
 	public AppUsers getUsers() {
 		return users;
 	}
@@ -100,7 +99,5 @@ public class Orders {
 	public void setOrder_id(long order_id) {
 		this.order_id = order_id;
 	}
-	
-	
 
 }

@@ -3,7 +3,7 @@ package com.sporty.service;
 import java.util.Date;
 import java.util.List;
 
-import com.sporty.controller.OrderDTO;
+import com.sporty.DTO.OrderDTO;
 import com.sporty.entity.AppUsers;
 import com.sporty.entity.OrderItems;
 import com.sporty.entity.Orders;

@@ -8,11 +8,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sporty.DTO.ProductAndCategory;
 import com.sporty.entity.ProductCategory;
 import com.sporty.entity.Products;
 import com.sporty.repository.ProductCategoryRepository;
 import com.sporty.repository.ProductsRepository;
-import com.sporty.service.ProductCategoryService;
 import com.sporty.service.ProductsService;
 
 @Service
@@ -81,8 +81,8 @@ public class ProductsServiceImpl implements ProductsService {
 //	}
 
 	@Override
-	public List<Products> getProducts() {
-		List<Products> prod_List = productsRepository.findAll();
+	public List<ProductAndCategory> getProducts() {
+		List<ProductAndCategory> prod_List = productsRepository.getProducts();
 		return prod_List;
 	}
 

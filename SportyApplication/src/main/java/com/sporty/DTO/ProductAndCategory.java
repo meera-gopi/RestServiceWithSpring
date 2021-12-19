@@ -1,4 +1,4 @@
-package com.sporty.controller;
+package com.sporty.DTO;
 
 import java.math.BigDecimal;
 
@@ -12,22 +12,31 @@ public class ProductAndCategory {
 	BigDecimal price;
 	long category_id;
 	long prod_id;
+	String category_name;
     private ProductCategory cat;
 	
 	public ProductAndCategory() {
 		
 	}
 	
-	public ProductAndCategory(String prodName, BigDecimal price, long category_id) {
+	public ProductAndCategory(long prod_id,String prodName, BigDecimal price, long category_id,String category_name) {
 		super();
+		this.prod_id=prod_id;
 		this.prodName = prodName;
 		this.price = price;
 		this.category_id = category_id;
+		this.category_name =category_name;
 	}
 	
 	public ProductAndCategory(long prod_id,ProductCategory cat) {
 		this.prod_id=prod_id;
 		this.cat=cat;
+	}
+	
+	public ProductAndCategory(String prodName, BigDecimal price, long category_id) {
+		this.prodName=prodName;
+		this.price=price;
+		this.category_id=category_id;
 	}
 	
 	
@@ -65,6 +74,14 @@ public class ProductAndCategory {
 
 	public void setCat(ProductCategory cat) {
 		this.cat = cat;
+	}
+
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
 	}
 	
 	

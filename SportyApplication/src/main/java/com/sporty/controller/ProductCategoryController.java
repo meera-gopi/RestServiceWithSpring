@@ -37,9 +37,9 @@ public class ProductCategoryController {
 		return productCategoryService.removeCategory(categoryId);
 	}
 	
-	@GetMapping("/category and Products")
-	public List<ProductCategory> getProductCategoryDetails(){
-		return productCategoryService.categoryList();
-	}
+//	@GetMapping("/category and Products")
+//	public List<ProductCategory> getProductCategoryDetails(){
+//		return productCategoryService.categoryList();
+//	}
 	
 }

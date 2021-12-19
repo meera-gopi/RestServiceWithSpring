@@ -3,7 +3,7 @@ package com.sporty.service;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.sporty.entity.ProductCategory;
+import com.sporty.DTO.ProductAndCategory;
 import com.sporty.entity.Products;
 
 public interface ProductsService {
@@ -28,7 +28,7 @@ public interface ProductsService {
 	//List<Products> getProducts(long categoryId);
 	
 	//Get Products
-	List<Products> getProducts();
+	List<ProductAndCategory> getProducts();
 	
 	//get product by id
 	Products getProduct(long id);

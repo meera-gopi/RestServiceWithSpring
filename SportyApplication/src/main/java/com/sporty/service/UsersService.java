@@ -2,8 +2,7 @@ package com.sporty.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
+import com.sporty.DTO.usersDTO;
 import com.sporty.entity.AppUsers;
 
 
@@ -11,7 +10,7 @@ import com.sporty.entity.AppUsers;
 public interface UsersService {
 
 	//Get All Users	
-	List<AppUsers> getAllUsers();
+	List<usersDTO> getAllUsers();
 	
 	//Get User by userName and Password	
 	AppUsers getUserByUserNameAndPassword(String userName, String password);

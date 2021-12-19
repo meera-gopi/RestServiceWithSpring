@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sporty.entity.Products;
+import com.sporty.DTO.ProductAndCategory;
 import com.sporty.service.ProductsService;
 
 @RestController
@@ -25,15 +25,11 @@ public class ProductsController {
 	ProductsService productsService;
 	
 	@GetMapping("/ListAllProducts")
-	public List<Products> getAllProducts(){
+	public List<ProductAndCategory> getAllProducts(){
 		return productsService.getProducts();
 		
 	}
 	
-//	@GetMapping("/ListProductByCategory/{cat_id}")
-//	public List<Products> getAllProducts(@PathVariable("cat_id") long cat_id){
-//		return productsService.getProducts(cat_id);
-//	}
 	
 	@PostMapping("/saveProduct")
 	public String saveProduct(@RequestBody ProductAndCategory prodAndCat) {
